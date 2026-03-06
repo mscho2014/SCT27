@@ -1,0 +1,9 @@
+z 29
+outfile ne_xfel_out
+initial file initial_ne.dat
+fe file fe_200g_2000ev
+evolve td
+tr trfile hvfile
+history historyfile his_ne_29_200step rho
+time pump 1.d-18 1.d-15 1.e-14 36 34
+end

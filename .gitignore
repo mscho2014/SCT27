@@ -1,0 +1,29 @@
+# Compiled objects and executables
+*.o
+*.mod
+sct27
+
+# Runtime output files (large, reproducible)
+*.out
+zelda.out
+screen.out
+source_monitor
+rate.*
+info*
+init*
+
+# Run directories
+run_fig1b/
+run_fig1c/
+run_*/
+
+# Editor/OS
+*.swp
+*.swo
+.DS_Store
+*~
+
+# Large data outputs (re-generate from runs)
+feout*
+ne_xfel_out*
+ne_therm_out*

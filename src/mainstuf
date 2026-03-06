@@ -1,0 +1,89 @@
+c____mainstuf
+      character*8 itrout,itiout
+      character*20 nametime,nameinfo,nameinit,trfile
+      parameter(miso=49)
+      parameter(nprim=10)! be sure to change nprimp in popstuf
+      parameter(nlvi=170)
+
+      common /tradi8/ tr,trev,trfixed,dilution,barjnow(100),
+     1                barjend,trmin,xbarj,tmin
+      common /tiinfo/ tiev,tifixed,tibyte
+      common /const/ ao,boltz,speed,rh,pi,charge,hbar,emass,amass,
+     1               avogad,hp,evtohz,rhtohz,rhtoev,evtoerg,hceverg
+      common /plasmar/ denow,dinow,atomz,azp1,azm1,
+     1             boltzt,tev,r_ion,r_debye,r_lattice,zave,c1
+      common /plasmai/ iatomz,iazp1,iazm1,ibias
+      common /plmulti/fnem(10),tevm(10),fhot,ntem
+
+      common /coeff/ nlasta
+      common /stage/ eipz(0:miso)
+      common /iocom/ nametime,nameinfo,nameinit,trfile
+      common /inhab0/ il,in,ilast,ionow,neq,i1,
+     1                ire(0:miso),ibo(0:miso),nboun(0:miso),
+     2                irelast(0:miso),iraut(0:miso),iaut(0:miso) 
+      common /runflagC/ itrout,itiout
+      common /runflagI/ logtime
+      common /runflagR/ zbartemp, pctemp
+      common /iodefine/ ioo,ioi
+
+      common /avgatom/ orateaa(nlvi,nlvi,0:miso),evaa(nlvi,0:miso),
+     &	gaa(nlvi,0:miso),faa(nlvi,nlvi,0:miso),
+     &  AAexEbyT(nlvi,0:miso),cfaa(nlvi,nlvi,0:miso),
+     &	nocel(nlvi,0:miso,nprim),morb(nlvi,0:miso)
+
+      common /avalaa/ arateaa(nlvi,nlvi,0:miso),
+     &	escapeaa(nlvi,nlvi,0:miso),radint(nlvi,nlvi,0:miso),
+     &  eradint(nlvi,nlvi,0:miso)
+      common /autraa/ autoaa(nlvi,nlvi,0:miso)
+      common /levnamaa/ namaa(nlvi,0:miso),ncont(nlvi,0:miso),
+     & 	nish(nlvi,nlvi,0:miso),npqi(nlvi,nlvi,0:miso),
+     & 	npqe(nlvi,nlvi,0:miso),
+     &  nloex(nlvi,nlvi,0:miso),nhiex(nlvi,nlvi,0:miso)
+      common /lflagaa/ inaa(0:miso),naabn(0:miso),naaut(0:miso),
+     &  naatot(0:miso),
+     &	naaish(nprim,0:miso),naalsh(0:miso),ngr(0:miso),ngaut(7,0:miso)
+
+      common /aaextra/ spnmax(0:miso),satmax(7,0:miso),
+     &	sqq(nlvi,0:miso),fnn(100),ennn(100)
+
+      common /icase/ fbdr,isomin,isomax,ibdr,isamp(2),nxprim,icfn 
+
+      common /rates/ rtflag, cxflag, relflag
+      logical  rtflag, cxflag, relflag
+
+      character*8 namaa
+      parameter (File_Name_Length=20)
+
+C  fhot_flag = INFORMATION ON PUTTING IN A MB HOT ELECTRON CONTRIBUTION
+C 
+C    fhflag = FLAG INDICATING METHOD OF GENERATING HOTS: 'off', 'file', 'fixed'
+C    Fhotset= IF FHFLAG IS FIXED THEN THIS IS THE HOT FRACTION
+C    Thotset= IF FHFLAG IS FIXED THEN THIS IS THE HOT TEMPERATURE
+
+      common /fhot_flag/ fhflag,Fhotset,Thotset
+      character*8 fhflag
+
+      common /fefiler/ fefile,feflag
+
+      character*20 fefile
+      character*9 feflag
+
+      common /ksh_flag/flyflag
+      character*3 flyflag
+
+      parameter(mgas=100)
+      common /gauss/xgas(mgas),wgas(mgas),ngas
+
+      common /xxtrn/oratexx(nlvi,nlvi,miso),fxx(nlvi,nlvi,miso),
+     &         aratexx(nlvi,nlvi,miso),escapexx(nlvi,nlvi,miso)
+      common /nntrn/petrn(nlvi,nlvi,miso),istrn(nlvi,nlvi,miso)
+
+      common /jjcx/ cxjj(45,5,100)
+
+      common /cindipd3/indlev(nlvi,0:miso)
+
+      common /phiscof/ cphilsh(8,10,100),econt,estm,etrad
+      common /gamrts/gamrat(nlvi,0:miso)
+      common /ccaltev/ ephabs,ephab0,ephabf,tephabs,tephab0,
+     &       teint,tekin,totin2, tevbal,ttlast
+      common /ratctr/ratcon(12)

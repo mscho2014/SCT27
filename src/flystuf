@@ -1,0 +1,15 @@
+      common/hydrogen/oratehy(25,25),evhy(25),ghy(25)
+
+      common/helium/oratehe(31,31),evhe(31),ghe(31),autohe(31,1)
+
+      common/lithium/orateli(40,40),evli(40),gli(40),autoli(40,1),
+     1                  fli(40,40)
+      common/avalnow/aratehy(25,25),aratehe(31,31),arateli(40,40),
+     1               escapehy(25,25),escapehe(31,31),escapeli(40,40)
+      common/levnam/ namhy(25),namhe(31),namli(25)
+      common/berilum/autobe(100,100)
+      character*8 namli,namhe,namhy
+
+      common /hulrad/fhul(70,70,3),ahul(70,3)
+      common /hulcol/chul(2200,5),idcxhl(70,70,3)
+      common /hulrrt/oratehl(70,70,3)

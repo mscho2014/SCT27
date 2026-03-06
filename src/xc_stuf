@@ -1,0 +1,76 @@
+C   XC_stuf
+
+      parameter (nebinit=500)
+
+c check NMTout in timestuf for consistency!!!
+      parameter (NMTfout=500)
+
+C  velocity = INITIAL ENERGY GRID, INTEGRATION WEIGHTS, AND CURRENT fe
+C  
+C    energy() = ENERGY GRID FOR ELECTRONS DISTRIBUTIONS
+C    denergy() = WEIGHTS SUCH THAT SUM fe*sqrt(energy)*denergy OVER nebins = 1.
+C    fe() = ELECTRON ENERGY DISTRIBUTION DEFINED SO THAT Ne*fe*sqrt(energy)*de
+C           IS THE NUMBER OF ELECTRONS IN ENERGY RANGE DE
+
+      common/velocity/energy(0:nebinit),denergy(0:nebinit),fe(0:nebinit)
+
+C  fetimesR,I = ELECTRON ENERGY DISTRIBUTION 
+C
+C    fe0() = ELECTRON DISTRIBUTION AT tlast, SEE COMMON/last/ IN timestuf
+C    fe1() = ELECTRON DISTRIBUTION AT tnext, SEE COMMON/next/ IN timestuf
+C    feIN() = ELECTRON DISTRIBUTION READ FROM fefile AT TIMES fetime()
+C    feOut() = CALCULATED ELECTRON DISTRIBUTION AT OUTPUT TIMES
+C    fetime() = ARRAY OF TIMES AT WHICH feIN() DATA IS READ
+C    ntimefe = # of TIMES IN FILE fefile
+C    nebins = # OF ENERGIES IN ARRAY energy
+
+      common /fetimesR/ fe0(nebinit),fe1(nebinit),
+     1 feIn(nebinit,NMTfout),feOut(nebinit,NMTfout),fetime(NMTfout)
+
+      common /fetimesI/ ntimefe,nebins,nefmax
+
+C  fefiler = INFORMATION ON fe FILE OPTIONS
+C 
+C    fefile = FILE WITH THE ELECTRON DISTRIBUTION AS A FUNCTION OF ENERGY & TIME
+C    feflag = FLAG INDICATING METHOD OF GENERATING fe(): 'file', 'fefile'
+
+      common /fetemp/tevfe(NMTfout),fevfe(NMTfout)
+      common /feteout/tevfout(NMTfout),fevfout(NMTfout)
+
+c  timing information to be handed over to ZELDA 
+c  in order to insure the convergence in ZELDA
+
+c     dtfly = time-increments dictated by FLYCHK
+c     isfly = maximum number of time steps 
+
+      common /timefly/ tfirst,tzelda,dtfly,isfly
+
+c  electron sources
+
+      common /xesource/zqs(nebinit),zqr(nebinit)
+
+c  collisional exciation rates
+
+      common /vrates/Vcaa(nlvi,nlvi,0:miso),
+     1       Vchy(25,25),Vche(31,31),Vcli(40,40),Vchl(70,70,3)	
+
+c  collisional ionization rates
+
+      common /xrates/Xsxx(nlvi,nlvi,0:miso),Xbetaxx(nlvi,nlvi,0:miso),
+     1 Xalfxx(nlvi,nlvi,0:miso),Xbstmxx(nlvi,nlvi,0:miso),
+     2 Xcapexx(nlvi,nlvi,0:miso),Xcxx(nlvi,nlvi,0:miso)              	
+
+      common /xrates2/Xsyy(nlvi,nlvi,0:miso),Xbetayy(nlvi,nlvi,0:miso),
+     1 Xalfyy(nlvi,nlvi,0:miso),Xbstmyy(nlvi,nlvi,0:miso),
+     2 Xcapeyy(nlvi,nlvi,0:miso),Xcyy(nlvi,nlvi,0:miso)        
+
+c threshold energy for fe() rates
+
+      common /xthr/ exthr
+
+
+c conditionals for log space
+      common /fevm/ z2ap1, zalpha, nizcrm
+
+c arrays for log10 energy
+      common /findx/inftyp,indfx(-10:10)

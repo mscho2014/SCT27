@@ -1,0 +1,14 @@
+c____runstuf
+      common /opacity/ opacflag
+      common /mixture/ zelse,percent,elseznum,amratio
+      common /lags/ ioutflag, iteflag
+      common /inits/ initflag, initfile, tiflag, radflag
+      common /runparam/ ievolve,iruntyp1,iruntyp2,timename
+      common /sizetype/ sizefix
+      character*8 initflag,tiflag, radflag
+      character*20 timename,initfile
+      character*3 ievolve,iruntyp1,iruntyp2
+      character*4 opacflag
+	
+      logical batch,zeldaflag
+      common /batchjob/ batch,zeldaflag

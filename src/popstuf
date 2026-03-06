@@ -1,0 +1,38 @@
+c____popstuf
+c     number needed up to z=93	
+      parameter(numpp=4500)
+      parameter(mtran=100000,nprimp=10)
+
+      common /initpops/ popinit(numpp)
+      common /popI/ numpop
+      common /popR/ pop(numpp)
+      common /popul8/ popout(numpp)
+      common /inhab1/ a(numpp,numpp),b(numpp),d(numpp),x(numpp)
+      common /jacobianR/ aijlow
+      common /jacobianI/ jacob(numpp,numpp),mlnow,munow
+      common /jacobianL/ jacobon
+      common /hjacob/ hjacob(numpp), numnums(0:11)
+
+      common /cindipd/indp2l(0:numpp),indl2p(0:numpp)
+      common /cindipd2/indipd(numpp),indpop(0:numpp)
+     &	      
+
+      character*1 hjacob,numnums
+      logical jacobon
+
+c new energy & transition stuff 
+
+      common/isocom/nlev(0:100),nlbn(0:100),iptlev(0:100)
+      common/levels/elev(numpp),glev(numpp),qlev(numpp),
+     &	eltoip(numpp)
+      common/ilevls/ntot,isolev(numpp),ionstg(numpp),
+     &       levl(numpp),lvcont(numpp),lmatch(numpp),
+     &	     noctot(numpp,nprimp+1),mobtot(numpp)
+      common /compactR/efromgr(numpp),evtoip(numpp),
+     &	     efgrdp(numpp),ev2ip(numpp)
+      common/chlev/kname(0:numpp)
+      character*8 kname
+
+      common/rindx/ntran,lupper(mtran),llower(mtran),
+     &     ltrans(mtran),ltype(mtran)
+      common/popionR/popion(0:100)

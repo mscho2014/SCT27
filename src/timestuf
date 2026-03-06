@@ -1,0 +1,39 @@
+c____timestuf
+      parameter (NMTin=500, NMTout=500, ncolumn=16)
+      character*4 column
+      common /hydrodatR/ timein(NMTin),tein(NMTin),enein(NMTin),
+     1       rhoin(NMTin),totpin(NMTin),trin(NMTin),zbin(NMTin),
+     2       sizein(NMTin),tiin(NMTin),
+     3       thotin(NMTin),fhotin(NMTin),xmulte(NMTin),ymulte(NMTin),
+     4       diltin(NMTin),zmixin(NMTin),percin(NMTin)
+      common /hydrodatI/ ntimein
+      common /calcinfo/ enecalc(NMTout),totpcalc(NMTout),zbcalc(NMTout),
+     1                  sizecalc(NMTout),ticalc(NMTout),trcalc(NMTout)
+      common /timeinfoR/ times(NMTout),teout(NMTout),eneout(NMTout),
+     1       rhoout(NMTout),totpout(NMTout),trout(NMTout),
+     2       zbout(NMTout),sizeout(NMTout),tiout(NMTout),
+     3       timezero,timestop,timepause,deltat,deltlg,zmix
+      common /timeinmte/tevmout(10,NMTout),fnemout(10,NMTout),
+     1                  ntemout(NMTout)
+      common /timeinfoI/ ntimes
+      common /AtTimeT/ TimeAtT,teAtT,eneAtT,rhoAtT,totpAtT,
+     1                 trAtT,zbAtT,sizeAtT,tiAtT,
+     2                 thjnk,fhjnk,xmjnk,ymjnk,
+     3	               dltAtT,zmixAtT,percAtT      
+      common /AtTimeJ/barjAtT(100)
+      common /trinfoR/ rdtime(NMTin),xev(100)
+     1                ,barjin(100,NMTin),delevtr
+      common /trinfoI/ ngrid,ntimtr
+      common /whichdat/icolumn(ncolumn)
+      common /colnames/ column(ncolumn)
+      common /last/ t0,tr0,rh0,d0,totp0,zb0,size0,ti0,barj0(100),tlast
+      common /next/ t1,tr1,rh1,d1,totp1,zb1,size1,ti1,barj1(100),tnext
+      common /trdlt/ dlt0, dlt1, zmix0, zmix1,perc0, perc1
+      common /tmulti/fnem0(10),tevm0(10),fnem1(10),tevm1(10),fhot0,fhot1
+      common /timinfo/ SecZero,SecInit,SecEnd(NMTout)
+      common /timelast/ timeLAST
+      common /outcount/ iolimit,iolevel,iouttime(NMTout),numdens,
+     1                  iostart,iostop,iodelta
+      common /timemult/tevmin(10,NMTin),fnemin(10,NMTin),ntemin(NMTin)
+      common /timhyd/tnext0, tlast0
+
