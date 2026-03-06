@@ -68,7 +68,7 @@ sct27_github/
 │       ├── his_ne_29_200step # Plasma history (density, Te fixed)
 │       ├── initial_ne.dat  # Initial population (100% neutral Ne)
 │       ├── atomic.data     # Atomic structure data
-│       └── atomic_inp.29   # Atomic input for Ne (Z=29 index)
+│       └── atomic_inp.10   # Atomic input for Ne (Z=10 index)
 ├── scripts/
 │   ├── run_fig1b.sh        # Reproduce Fig. 1(b): XFEL pulse dynamics
 │   └── run_fig1c.sh        # Reproduce Fig. 1(c): EEDF thermalization
